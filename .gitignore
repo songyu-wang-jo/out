@@ -1,0 +1,17 @@
+# idea
+**/.idea/*
+
+# vs code
+**/.vscode
+
+# js
+
+
+# maven
+
+
+
+# UI
+/UI/.gitignore
+/UI/package-lock.json
+/UI/node_modules
