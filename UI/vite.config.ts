@@ -69,7 +69,7 @@ export default defineConfig(({command, mode}) => {
         // svg 图片加载插件
         createSvgIconsPlugin({
             // Specify the icon folder to be cached
-            iconDirs: [path.resolve(process.cwd(), 'src/svg')],
+            iconDirs: [path.resolve(process.cwd(), 'src/assets/svg')],
             // Specify symbolId format
             symbolId: 'icon-[dir]-[name]'
         })
@@ -91,7 +91,7 @@ export default defineConfig(({command, mode}) => {
         envPrefix: 'out_',
         resolve: {
             alias: {
-                '@': '/src'
+                '@': path.resolve(process.cwd(), 'src')
             }
         },
         css: {

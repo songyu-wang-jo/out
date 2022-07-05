@@ -9,7 +9,7 @@
 
 <script setup lang="ts" name="Index">
 import {computed} from "vue";
-import SvgIcon from "../components/SvgIcon.vue";
+import SvgIcon from "@/components/SvgIcon.vue";
 
 let appName = computed(() => {
   return import.meta.env.out_app_name
@@ -19,7 +19,7 @@ let runMode = computed(() => {
   return import.meta.env.out_env
 })
 
-let processRunMode = computed(()=>{
+let processRunMode = computed(() => {
   return process.env.NODE_ENV
 })
 
