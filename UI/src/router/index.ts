@@ -1,5 +1,5 @@
 import {createRouter, createWebHashHistory, RouteRecordRaw, RouterOptions} from "vue-router";
-import pageRouters from "./modules/view";
+import pageRouters from "./modules/view.routes";
 
 function initRoutes(): RouteRecordRaw[] {
     return pageRouters

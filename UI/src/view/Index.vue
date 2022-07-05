@@ -1,7 +1,9 @@
 <template>
   <div class="Index">
-    index component {{ appName }} on mode {{ runMode }}
+    index component {{ appName }} on mode {{ runMode }} on process mode {{ processRunMode }}
     <svg-icon name="peanut"/>
+    <el-button type="primary">Primary</el-button>
+    <el-table/>
   </div>
 </template>
 
@@ -15,6 +17,10 @@ let appName = computed(() => {
 
 let runMode = computed(() => {
   return import.meta.env.out_env
+})
+
+let processRunMode = computed(()=>{
+  return process.env.NODE_ENV
 })
 
 </script>
