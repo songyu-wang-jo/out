@@ -7,6 +7,8 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    DraggableBlock: typeof import('./src/components/draggableBlock/DraggableBlock.vue')['default']
+    DraggableBlockPanel: typeof import('./src/components/draggableBlock/panel/DraggableBlockPanel.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElTable: typeof import('element-plus/es')['ElTable']
     RouterLink: typeof import('vue-router')['RouterLink']

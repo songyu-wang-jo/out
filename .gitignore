@@ -1,5 +1,6 @@
 # idea
 **/.idea
+**/**.iml
 
 # vs code
 **/.vscode
@@ -14,5 +15,5 @@
 
 # UI
 /UI/.gitignore
-/UI/package-lock.json
-/UI/node_modules
+**/**/package-lock.json
+**/**/node_modules

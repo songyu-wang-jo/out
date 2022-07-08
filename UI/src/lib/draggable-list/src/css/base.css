@@ -1,0 +1,46 @@
+.draggable_container {
+    font-size: 14px;
+    overflow: scroll;
+    position: relative;
+}
+
+.draggable {
+    user-select: none;
+    cursor: pointer;
+    background-color: #f8f8f8;
+    height: 5em;
+    line-height: 5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: relative;
+    border-bottom: #c4f5e4 solid 1px;
+    transition: background-color 300ms,height 200ms;
+}
+
+.draggable:hover {
+    background-color: #c4f5e4;
+    transform: scaleY(1.1);
+}
+
+/*定义滚动条高宽及背景
+高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+/*定义滚动条轨道
+ 内阴影+圆角*/
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+    height: 10px;
+    background: white;
+}
+
+/*定义滑块
+ 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(144, 147, 153, .3);
+}

@@ -43,9 +43,7 @@ export default defineConfig(({command, mode}) => {
         }),
         // 自动导入相关UI组件缺失的样式
         createStyleImportPlugin({
-            resolves: [
-                ElementPlusResolve(),
-            ],
+            resolves: [ElementPlusResolve(),],
         }),
         // 监听对应的文件变化自动重启程序
         VitePluginRestart({
@@ -89,11 +87,6 @@ export default defineConfig(({command, mode}) => {
         },
         envDir: './',
         envPrefix: 'out_',
-        resolve: {
-            alias: {
-                '@': path.resolve(process.cwd(), 'src')
-            }
-        },
         css: {
             //css预处理
             preprocessorOptions: {
