@@ -31,7 +31,7 @@ const list_data = [
 ]
 
 onMounted(() => {
-  const draggableList = new DraggableList(list_data, 'draggable-block', {})
+  new DraggableList(list_data, 'draggable-block', {})
 })
 
 </script>

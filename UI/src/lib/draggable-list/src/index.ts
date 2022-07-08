@@ -10,7 +10,7 @@ class DraggableList {
     /**
      * 转载列表的容器
      */
-    container: HTMLElement | null = null
+    container: HTMLElement
 
     /**
      * 可拖拽的组件 dom 数组
@@ -47,8 +47,8 @@ class DraggableList {
     }
 
     /**
-     * 将准备好的拖拽组件及插槽渲染到对用 id 的元素内
-     * @param element_id
+     * 将准备好的拖拽组件及插槽渲染到对应 id 的元素内
+     * @param element_id 元素的 id
      */
     mount(element_id: string) {
         this.container = document.getElementById(element_id)
@@ -59,23 +59,54 @@ class DraggableList {
         })
     }
 
+    /**
+     * 可拖拽组件相关初始操作
+     * @param row 初始化该行所需的数据
+     * @param index 该行的索引
+     */
     init_draggable(row: object, index: number) {
         const draggable = document.createElement('div');
         draggable.classList.add('draggable');
         draggable.style.zIndex = '10000'
         draggable.accessKey = String(index)
         this.build_draggable_row(draggable, row);
-        this.makeDraggable(draggable,index);
+        this.makeDraggable(draggable, index);
         this.draggable.push(draggable);
     }
 
-    makeDraggable(draggable: HTMLElement,index: number) {
+    /**
+     * 给可拖动组件设置相关拖动事件
+     *
+     * @param draggable 可拖动组件
+     * @param index 组件对应在拖动列表中的的下标索引
+     */
+    makeDraggable(draggable: HTMLElement, index: number) {
+
         draggable.onmousedown = mouseDown => {
-            let offsetY = draggable.offsetTop - mouseDown.clientY - (71 * index)
-            draggable.style.zIndex = '30000'
+            const offsetY = draggable.offsetTop - mouseDown.clientY - (71 * index);
+            const cot = this.container.offsetTop;
+            const mouseDownOY = mouseDown.offsetY;
+            const ctMo = mouseDownOY + cot;
+
+            // 减去滚动条的高度
+            const coh = this.container.offsetHeight - 3;
+
+            const ctMoCh71 = ctMo + coh - 70;
+            const csh = this.container.scrollHeight;
+            const coHt71 = cot + csh - 70;
+            const maxScrollTop = csh - coh;
+            draggable.style.zIndex = '30000';
             draggable.onmousemove = mouseMove => {
-                let top = offsetY + mouseMove.clientY
-                draggable.style.top = top + 'px'
+                if (mouseMove.clientY < ctMo || mouseMove.clientY > ctMoCh71) {
+                    // 拖拽引起容器滚动
+                    console.log('ok');
+                    // this.container.scroll({top: top})
+                }
+                let ctOy = mouseMove.clientY - mouseDownOY
+                if (ctOy > cot && 3 < coHt71 && this.container.scrollTop <= maxScrollTop) {
+                    let top = offsetY + mouseMove.clientY;
+                    draggable.style.top = top + 'px';
+                }
             }
         }
 
@@ -95,10 +126,15 @@ class DraggableList {
 
     }
 
-    replace(currentTop: number, level: number) {
-        // console.log(currentTop)
-    }
+    // replace(currentTop: number, level: number) {
+    //     // console.log(currentTop)
+    // }
 
+    /**
+     * 构建可拖拽的行组件 内部元素
+     * @param draggable
+     * @param row
+     */
     build_draggable_row(draggable: HTMLElement, row: object) {
         let key: keyof object
         // @ts-ignore

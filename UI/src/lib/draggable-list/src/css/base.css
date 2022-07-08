@@ -20,14 +20,13 @@
 
 .draggable:hover {
     background-color: #c4f5e4;
-    transform: scaleY(1.1);
 }
 
 /*定义滚动条高宽及背景
 高宽分别对应横竖滚动条的尺寸*/
 ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 6px; /*侧边滚动条宽度*/
+    height: 3px; /*底部滚动条高度*/
 }
 
 /*定义滚动条轨道
