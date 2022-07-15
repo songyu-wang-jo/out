@@ -85,6 +85,11 @@ export default defineConfig(({command, mode}) => {
         define: {
             'process.env': {...process.env, ...loadEnv(mode, process.cwd())}
         },
+        resolve:{
+          alias: {
+              '@': './src/'
+          }
+        },
         envDir: './',
         envPrefix: 'out_',
         css: {

@@ -40,19 +40,18 @@ class DraggableList {
         this.row_count = data.length
         this.col_count = Object.keys(data[0]).length
         this.list_data.forEach((row, index) => {
-            // 可拖拽组件插槽设置
             this.init_draggable(row, index);
         })
-        this.mount(container_id)
+        const containerEl = document.getElementById(container_id);
+        if (containerEl === null) throw "根据 id 未获取到挂载的容器"
+        this.container = containerEl
+        this.mount()
     }
 
     /**
      * 将准备好的拖拽组件及插槽渲染到对应 id 的元素内
-     * @param element_id 元素的 id
      */
-    mount(element_id: string) {
-        this.container = document.getElementById(element_id)
-        if (this.container === null) throw "根据 id 未获取到挂载的容器"
+    mount() {
         this.container.classList.add('draggable_container')
         this.draggable.forEach(draggable => {
             this.container?.appendChild(draggable)
@@ -97,13 +96,13 @@ class DraggableList {
             const maxScrollTop = csh - coh;
             draggable.style.zIndex = '30000';
             draggable.onmousemove = mouseMove => {
-                if (mouseMove.clientY < ctMo || mouseMove.clientY > ctMoCh71) {
+                if ((mouseMove.clientY < ctMo || mouseMove.clientY > ctMoCh71) && this.container.scrollTop < maxScrollTop) {
                     // 拖拽引起容器滚动
                     console.log('ok');
                     // this.container.scroll({top: top})
                 }
                 let ctOy = mouseMove.clientY - mouseDownOY
-                if (ctOy > cot && 3 < coHt71 && this.container.scrollTop <= maxScrollTop) {
+                if (ctOy > cot && 3 < coHt71) {
                     let top = offsetY + mouseMove.clientY;
                     draggable.style.top = top + 'px';
                 }

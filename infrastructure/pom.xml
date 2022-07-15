@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>api-starter</module>
+        <module>comp-enhancer</module>
     </modules>
 
     <!-- lookup parent from repository -->

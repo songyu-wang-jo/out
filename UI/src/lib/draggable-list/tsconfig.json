@@ -15,7 +15,10 @@
     "moduleResolution": "Node",
     "types": [
       "node"
-    ]
+    ],
+    "paths": {
+      "@": ["./src/"]
+    }
   },
   "include": [
     "./src/**/**.ts"
