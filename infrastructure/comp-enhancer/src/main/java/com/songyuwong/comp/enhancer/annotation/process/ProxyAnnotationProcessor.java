@@ -15,7 +15,6 @@ import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 import java.io.IOException;
-import java.lang.reflect.InvocationHandler;
 import java.util.Objects;
 import java.util.Set;
 
@@ -67,7 +66,6 @@ public class ProxyAnnotationProcessor extends AbstractProcessor {
                     proxyFactoryJavaFile.writeTo(filer);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
-
                 }
             }
         }

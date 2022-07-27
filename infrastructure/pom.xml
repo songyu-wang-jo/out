@@ -6,6 +6,9 @@
     <modules>
         <module>api-starter</module>
         <module>comp-enhancer</module>
+        <module>authorized-provider</module>
+        <module>zookeeper-temp</module>
+        <module>kafka-temp</module>
     </modules>
 
     <!-- lookup parent from repository -->

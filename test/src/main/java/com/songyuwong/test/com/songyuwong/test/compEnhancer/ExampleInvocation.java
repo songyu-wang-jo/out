@@ -9,23 +9,20 @@ import java.lang.reflect.Method;
  * </p>
  *
  * @author SongYu
- * @since 2022/7/15
+ * @since 2022/7/17
  */
-public class TestInvocation extends ProxiedInvocationHandler {
-
-
-    public TestInvocation(Object target) {
+public class ExampleInvocation extends ProxiedInvocationHandler {
+    public ExampleInvocation(Object target) {
         super(target);
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        if (method.getName().equals("test")) {
-            System.out.println("success");
-            return method.invoke(super.target, args);
+
+        if (method.getName().equals("saySomething")) {
+            System.out.println(target.toString());
+            return method.invoke(target, args);
         }
-        return method.invoke(proxy, args);
+        return method.invoke(target);
     }
-
-
 }
